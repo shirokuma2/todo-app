@@ -3,16 +3,23 @@ import {Task} from '../Types';
 
 type Props = {
   task: Task
+  handleDone: (task: Task) => void
+  handleDelet: (task: Task) => void
 }
 
-const TaskItem: React.FC<Props> = ({task}) => {
+const TaskItem: React.FC<Props> = ({task, handleDone, handleDelet}) => {
   return (
-    <li>
+    <li className={task.done ? "done" : ""}>
       <label>
-        <input type="checkbox" className='checkbox-input' />
+        <input type="checkbox" className='checkbox-input' 
+        onClick={() => handleDone(task)}
+        defaultChecked={task.done}
+        />
         <span className='checkbox-label'>{task.title}</span>
       </label>
-      <button className='btn is-delete'>削除</button>
+      <button className='btn is-delete'
+      onClick={() => handleDelet(task)}
+      >削除</button>
     </li>
   )
 }
