@@ -2,17 +2,20 @@ import React from 'react';
 import {Task} from '../Types';
 
 type Props = {
-  task: Task
   handleDone: (task: Task) => void
+  task: Task  // 順番は関係ない
   handleDelet: (task: Task) => void
+
 }
 
 const TaskItem: React.FC<Props> = ({task, handleDone, handleDelet}) => {
+
+  const checkStyle = task.done ? "done" : ""  // class名の制御
   return (
-    <li className={task.done ? "done" : ""}>
+    <li className={checkStyle}>
       <label>
         <input type="checkbox" className='checkbox-input' 
-        onClick={() => handleDone(task)}
+        onClick={() => handleDone(task)}  // 関数に引数があるためarrow記述
         defaultChecked={task.done}
         />
         <span className='checkbox-label'>{task.title}</span>
