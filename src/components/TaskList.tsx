@@ -17,30 +17,30 @@ const TaskList: React.FC<Props> = ({tasks, setTasks }) => {
   }
 
   const handleDelet = (task: Task) => {
-    setTasks(prev => prev.filter(t => 
+
+    setTasks(prev => prev.filter(t =>
         t.id !== task.id
       ))
   }
 
+  const noTodo = "登録されたtodoはありません"
+  const listItem = <ul className='task-list'>
+    {
+      tasks.map(task => (
+        <TaskItem
+        key={task.id}
+        task={task}
+        handleDone={handleDone}
+        handleDelet={handleDelet}
+        />
+      ))
+    }
+  </ul>
 
   return (
-<div className='inner'>
-  {
-tasks.length <= 0 ? "登録されたtodoはありません" :
-<ul className='task-list'>
-  {
-    tasks.map(task => (
-      <TaskItem
-      key={task.id}
-      task={task}
-      handleDone={handleDone}
-      handleDelet={handleDelet}
-      />
-    ))
-  }
-</ul>
- }
-</div>
+    <div className='inner'>
+      { tasks.length <= 0 ? noTodo : listItem }
+    </div>
   )
 }
 

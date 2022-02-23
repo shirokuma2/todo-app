@@ -14,7 +14,6 @@ const initialState: Task[] = [
     id: 1,
     title: "最初のtodo",
     done: true
-
   }
 ]
 
