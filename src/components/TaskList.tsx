@@ -5,7 +5,7 @@ import {Task} from '../Types';
 
 type Props = {
   tasks: Task[]
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>  // stateの値を変更するsetのやつも親から渡せる
 }
 
 const TaskList: React.FC<Props> = ({tasks, setTasks }) => {
